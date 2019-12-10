@@ -1,6 +1,6 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['scorecard'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+templates['scoreCard'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<section class=\"cards\">\n<div class=\"card\" data-score=\""
@@ -18,14 +18,26 @@ templates['scorecard'] = template({"compiler":[8,">= 4.3.0"],"main":function(con
 templates['leaderboard'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 
+  return "    <section id = \"cards\">\n"
+    + ((stack1 = container.invokePartial(partials.scoreCard,(depth0 != null ? depth0.singlepost : depth0),{"name":"scoreCard","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "    </section>\n\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "\n<section id=\"cards\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.scoreData : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":19,"column":4},"end":{"line":21,"column":13}}})) != null ? stack1 : "")
+    + "</section>\n\n";
+},"4":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
   return ((stack1 = container.invokePartial(partials.scoreCard,depth0,{"name":"scoreCard","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<body>\n<header>\n\n"
+  return "\n<header>\n\n"
     + ((stack1 = container.invokePartial(partials.header,depth0,{"name":"header","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "\n</header>\n\n<section id=\"cards\">\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.scoreData : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":9,"column":4},"end":{"line":11,"column":13}}})) != null ? stack1 : "")
-    + "</section>\n\n</body>\n";
+    + "\n</header>\n\n\n<body>\n\n"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.display : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":11,"column":0},"end":{"line":24,"column":7}}})) != null ? stack1 : "")
+    + "</body>\n";
 },"usePartial":true,"useData":true});
 })();

@@ -8,8 +8,10 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var data = require('./scoreData');
 
+
+
 var app = express();
-var port = process.env.PORT || 4201;
+var port = process.env.PORT || 4220;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('views', path.join(__dirname, 'views'));
@@ -29,10 +31,37 @@ app.get('/leaderboard', function(req, res, next){
   });
 });
 
-app.get('/rules', function(req, res, next){
-  console.log("== Requesting Rules!");
-  //res.render('rules');
+app.get('/rules', function(req,res, next){
+    console.log("This is the rules");
+    res.status(200).render('rules');
 });
+
+
+
+app.get('/leaderboard/:n', function(req,res, next){
+    var n = req.params.n;
+    console.log("== Requesting single player");
+      var singlepost = data[n];
+      res.status(200).render('leaderboard',  {
+          display: true,
+          singlepost: singlepost
+      });
+
+});
+
+app.get('/play' , function(req,res,next){
+      console.log("==Requesting to play the game");
+      res.status(200).render('play');
+
+});
+
+
+app.get('*', function(req, res){
+    console.log("== This is not the request you need");
+    res.status(200).render('404');
+
+});
+
 app.listen(port, function () {
   console.log("== Server is listening on port", port);
 });

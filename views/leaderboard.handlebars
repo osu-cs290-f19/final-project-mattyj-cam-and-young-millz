@@ -1,9 +1,19 @@
-<body>
+
 <header>
 
   {{>header}}
 
 </header>
+
+
+<body>
+
+{{#if display}}
+    <section id = "cards">
+      {{> scoreCard singlepost}}
+    </section>
+
+{{else}}
 
 <section id="cards">
     {{#each scoreData}}
@@ -11,4 +21,5 @@
     {{/each}}
 </section>
 
+{{/if}}
 </body>
