@@ -10,7 +10,23 @@
 
     <script src="index.js" charset="utf-8" defer></script>
   </head>
+  <header>
+    {{>header}}
+  </header>
   <body>
+    <nav class="navbar">
+    <ul class="navlist">
+      <div class="nav-element">
+        <li class="navitem"><a href="/leaderboard">LeaderBoard</a></li>
+      </div>
+      <div class="nav-element">
+        <li class="navitem"><a href="/rules">Rules</a></li>
+      </div>
+      <div class="nav-element">
+        <li class="navitem right"><a href="/play">Play</a></li>
+      </div>
+    </ul>
+    </nav>
     {{{body}}}
   </body>
 </html>
