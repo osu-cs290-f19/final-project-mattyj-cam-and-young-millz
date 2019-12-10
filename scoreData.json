@@ -1,14 +1,17 @@
 [
   {
     "name": "Matthew Jacobsen",
-    "score": 443420
+    "score": 443420,
+    "photoURL": "https://pbs.twimg.com/profile_images/644893740302102529/woJuLx9K.jpg"
   },
   {
     "name": "Cam O'Brien",
-    "score": 45
+    "score": 45,
+    "photoURL": "https://pbs.twimg.com/profile_images/1108319952883216384/3Q4_Rz67_400x400.png"
   },
   {
     "name": "Jack Miller",
-    "score": 9
+    "score": 9,
+    "photoURL": "https://at-cdn-s02.audiotool.com/2017/09/14/documents/CrLbws9afncpCIK7pnIkqksUzgMueY6/0/cover256x256-2d8b86b2efe142efb1fdfb6674e507c1.jpg"
   }
 ]

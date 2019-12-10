@@ -11,25 +11,24 @@ var data = require('./scoreData');
 var app = express();
 var port = process.env.PORT || 4201;
 
-//app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
-
-//exphbs.registerPartials(__dirname + '/views/partials');
-//app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.get('/', function(req, res, next){
   console.log("== Requesting Root!");
-  
-  //res.render('home');
+  res.status(200).render('homepage');
 });
+
 app.get('/leaderboard', function(req, res, next){
   console.log("== Requesting LeaderBoard!");
-  //res.render('leaderboard',{
-  //  scoreData: data;
-  //)};
+  res.status(200).render('leaderboard', {
+    scoreData: data
+  });
 });
+
 app.get('/rules', function(req, res, next){
   console.log("== Requesting Rules!");
   //res.render('rules');
