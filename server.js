@@ -21,6 +21,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res, next){
   console.log("== Requesting Root!");
+  
   //res.render('home');
 });
 app.get('/leaderboard', function(req, res, next){
