@@ -103,7 +103,7 @@ var jsbApp = {};
 var player = {};
 
 player.balance = 500;
-player.bet = null;
+player.bet = 0;
 player.trackPlayer = document.getElementById("track-player");
 
 // Store important elements in variables for later manipulation
@@ -150,7 +150,20 @@ function handleBetButtonClick(){
 
   if(player.bet > player.balance){
     alert("You don't have that much money to bet!");
-    player.bet = null;
+    player.bet = 0;
+    betBox.value= null;
+    return;
+  }
+  else if(player.bet == 0){
+    alert("You have to bet something, silly");
+    player.bet = 0;
+    betBox.value= null;
+    return;
+  }
+  else if(player.bet < 0){
+    alert("Enter a positive number");
+    player.bet = 0;
+    betBox.value= null;
     return;
   }
   else{
@@ -509,6 +522,10 @@ var track = function () {
     betButton.classList.remove('hidden');
     jsbApp.buttonBox.classList.add("hidden");
 
+    if(player.balance == 0){
+      alert("You went bankrupt");
+      location.reload();
+    }
 
 }
 
