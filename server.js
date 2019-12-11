@@ -8,14 +8,13 @@ var express = require('express');
 var exphbs = require('express-handlebars');
 var data = require('./scoreData');
 
-
-
 var app = express();
 var port = process.env.PORT || 4221;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
+
 
 app.use(express.static('public'));
 
