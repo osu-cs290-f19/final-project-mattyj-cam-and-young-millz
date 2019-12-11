@@ -511,3 +511,37 @@ var advise = function () {
     }
     return;
 }
+
+var showCashOutModal = document.getElementById('c-o-modal');
+var showCashOutModalBackground = document.getElementById('c-o-background');
+
+
+var cashOutButton = document.getElementById('cash-out-button');
+if(cashOutButton){
+  cashOutButton.addEventListener('click', function(){
+    var modalHeader3 = document.getElementById('player-score-header');
+    player.modalHeader3.innerHTML = "<h3>Player Score: " + player.balance + "</h3>";
+    showCashOutModal.classList.remove('hidden');
+    showCashOutModalBackground.classList.remove('hidden');
+
+  })
+
+}
+
+var modalAcceptButton = document.getElementById('modal-accept');
+if(modalAcceptButton){
+  modalAcceptButton.addEventListener('click', function(){
+    showCashOutModal.classList.add('hidden');
+    showCashOutModalBackground.classList.add('hidden');
+
+  });
+}
+
+var modalCancelButton = document.getElementById('modal-cancel');
+if(modalCancelButton){
+  modalCancelButton.addEventListener('click', function(){
+    showCashOutModal.classList.add('hidden');
+    showCashOutModalBackground.classList.add('hidden')
+
+  });
+}
