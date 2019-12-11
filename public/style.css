@@ -104,9 +104,9 @@ a {
 
 .Rules-board img{
   position: absolute;
-   top: 0px;
-   right: 0px;
-  height:30.8%;
+  top: 0px;
+  right: 0px;
+  height:26.7%;
 
 }
 .rules-list{
@@ -114,7 +114,7 @@ a {
 }
 
 .listitems{
-    display: flex;
+    display: inline-block;
     font-size: 25px;
     position: absolute;
     bottom: 37px;
@@ -434,12 +434,3 @@ button#stay
   margin-left: 20px;
   text-align: center;
 }
-
-/*
-.listitems{
-  overflow: hidden;
-  position: absolute;
-  bottom:0;
-  padding: 0;
-  margin: 20;
-  }

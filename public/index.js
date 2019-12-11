@@ -1,11 +1,10 @@
 
 var allElems = [];
-<<<<<<< HEAD
+
 var playername;
 var playerurl;
 
-=======
->>>>>>> cf553ac97fafc47d4c8e898c7e89bf75e14c92e0
+
 function parseBoardElem(elem){
   var elem = {
     name: elem.getAttribute('data-name'),
