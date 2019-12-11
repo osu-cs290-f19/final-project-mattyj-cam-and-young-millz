@@ -37,7 +37,6 @@ a {
 
 .navbar {
   display: flex;
-  border-style: solid;
   border-width: 2px;
   background-color:rgb(0,0,112);
   font-size: 25px;
@@ -58,25 +57,43 @@ a {
   border-radius: 5px;
 }
 
+
+
+.Rules-board img{
+  position: absolute;
+   top: 0px;
+   right: 0px;
+  height:30.8%;
+
+}
+
 #startlist{
   display: inline-block;
   position: absolute;
   left: -25px;
+  top: 225px;
   text-decoration: underline;
   color: black;
   font-size: 30px;
   display: flex;
 }
 
+.listitems li {
+  margin:10px;
+  
+
+}
 
 .listitems{
     diplay: flex;
     font-size: 25px;
     position: absolute;
-    bottom: 140px;
+    bottom: 37px;
     margin: 10px;
     border: 5px;
 }
+
+
 
 .navitem:hover {
   ;background-color: rgba(255, 255, 255, 0.18);
