@@ -11,7 +11,7 @@ var data = require('./scoreData');
 
 
 var app = express();
-var port = process.env.PORT || 4220;
+var port = process.env.PORT || 4221;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('views', path.join(__dirname, 'views'));

@@ -7,6 +7,8 @@ templates['scoreCard'] = template({"compiler":[8,">= 4.3.0"],"main":function(con
     + alias4(((helper = (helper = helpers.score || (depth0 != null ? depth0.score : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"score","hash":{},"data":data,"loc":{"start":{"line":2,"column":30},"end":{"line":2,"column":39}}}) : helper)))
     + "\" data-name=\""
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":2,"column":52},"end":{"line":2,"column":60}}}) : helper)))
+    + "\" data-photoURL=\""
+    + alias4(((helper = (helper = helpers.photoURL || (depth0 != null ? depth0.photoURL : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"photoURL","hash":{},"data":data,"loc":{"start":{"line":2,"column":77},"end":{"line":2,"column":89}}}) : helper)))
     + "\">\n  <div class=\"card-contents\">\n    <div class=\"post-image-container\">\n      <img src="
     + alias4(((helper = (helper = helpers.photoURL || (depth0 != null ? depth0.photoURL : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"photoURL","hash":{},"data":data,"loc":{"start":{"line":5,"column":15},"end":{"line":5,"column":27}}}) : helper)))
     + ">\n    </div>\n    <div class=\"scorecard-info-container\">\n      <a href=\"#\" class=\"card-title\">"
