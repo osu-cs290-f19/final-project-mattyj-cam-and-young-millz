@@ -1,5 +1,7 @@
 
 var allElems = [];
+var playername;
+var playerurl;
 
 function parseBoardElem(elem){
   var elem = {
@@ -316,7 +318,7 @@ var deckPrinter = function (deck) {
     {
         console.log(deck[i].name);
     }
-    return
+    return;
 }
 
 // Game loop begins when the play button is pressed
@@ -327,7 +329,7 @@ jsbApp.hitButton.addEventListener("click", function () {
     if (jsbApp.gameStatus === 2)
     {
         console.log("Hit clicked when game was over or already clicked.");
-        return;
+        return
     }
 
     // deal a card to the player and draw the hands
@@ -559,16 +561,34 @@ if(cashOutButton){
     //player.modalHeader3.innerHTML = "<h3>Player Score: " + player.balance + "</h3>";
     showCashOutModal.classList.remove('hidden');
     showCashOutModalBackground.classList.remove('hidden');
+    console.log("this is the variable for the info", modalHeader3);
 
   })
 
 }
+
+var playerin = document.getElementById('player-name-input');
+playerin.addEventListener('change', function(){
+    playername = event.currentTarget.value;
+    console.log(" THis is the playername inputted", playername);
+
+})
+
+var playerurl = document.getElementById('player-url-input');
+playerurl.addEventListener('change', function(){
+    playerurl = event.currentTarget.value;
+    console.log("This is the url for it", playerurl);
+
+})
+
+
 
 var modalAcceptButton = document.getElementById('modal-accept');
 if(modalAcceptButton){
   modalAcceptButton.addEventListener('click', function(){
     showCashOutModal.classList.add('hidden');
     showCashOutModalBackground.classList.add('hidden');
+  ;  insertNewElem(playerurl, player.score, playername);
 
   });
 }
