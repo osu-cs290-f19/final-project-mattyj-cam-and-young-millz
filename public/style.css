@@ -35,20 +35,31 @@ a {
 
 
 .navbar {
+  display: flex;
+  border-style: solid;
+  border-width: 2px;
+  background-color: black;
   font-size: 25px;
-  background-color: #fff;
 }
 
 .navlist {
+  display: flex;
   margin: 10px;
 }
 
 .navitem {
-  display: inline-block;
+  display: flex;
+  background-color: #ea973d;
+  margin: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 5px;
 }
 
 .navitem:hover {
-  background-color: rgba(215, 125, 116, 0.18);
+  ;background-color: rgba(255, 255, 255, 0.18);
+  background-color: #D3D3D3;
 }
 
 .navitem a {
