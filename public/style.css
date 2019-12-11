@@ -109,26 +109,12 @@ a {
   height:30.8%;
 
 }
-
-#startlist{
-  display: inline-block;
-  position: absolute;
-  left: -25px;
-  top: 225px;
-  text-decoration: underline;
-  color: black;
-  font-size: 30px;
-  display: flex;
-}
-
-.listitems li {
-  margin:10px;
-
+.rules-list{
 
 }
 
 .listitems{
-    diplay: flex;
+    display: flex;
     font-size: 25px;
     position: absolute;
     bottom: 37px;
@@ -164,14 +150,11 @@ a {
 .explanation{
     font-size: 20px;
 }
-.rules-list{
-    font-size:15px;
-    margin: 10px;
-}
+
 #startlist{
     font-size: 35px;
     margin:0px;
-    text-align: left;
+    text-align: center;
 }
 
 #titlerules{
@@ -452,10 +435,7 @@ button#stay
   text-align: center;
 }
 
-.startlist{
-  text-align: center;
-}
-
+/*
 .listitems{
   overflow: hidden;
   position: absolute;
