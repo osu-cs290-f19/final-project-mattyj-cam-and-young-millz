@@ -19,6 +19,49 @@ a {
   color: #f67811;
 }
 
+.losers {
+  font-size: 30px;
+}
+.loser-card {
+  margin: 5px;
+}
+.cards {
+  display: inline-flex;
+  align-items: center;
+}
+.card {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+}
+.card-contents {
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: gold;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.post-image-container{
+  align-items: center;
+}
+.post-image-container img{
+  border-radius: 50%;
+  max-height: 200px;
+  max-width: 200px;
+}
+.scorecard-info-container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .site-title {
   color: #454545;
   font-family: sans-serif;
