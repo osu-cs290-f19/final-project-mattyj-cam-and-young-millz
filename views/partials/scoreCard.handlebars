@@ -1,12 +1,13 @@
 <section class="cards">
-<div class="card" data-score="{{score}}" data-name="{{name}}">
+<div class="card" data-score="{{score}}" data-name="{{name}}" data-photoURL="{{photoURL}}" data-place="{{place}}">
   <div class="card-contents">
     <div class="post-image-container">
       <img src={{photoURL}}>
     </div>
-    <div class="scorecard-info-container">
-      <a href="#" class="card-title">{{name}}</a> <span class="card-score">${{score}}</span>
-    </div>
   </div>
+    <div class="scorecard-info-container">
+      <a href="#" class="card-title">{{name}}</a>
+      <span class="card-score">${{score}}</span>
+    </div>
 </div>
 </section>

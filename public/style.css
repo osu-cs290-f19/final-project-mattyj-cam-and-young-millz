@@ -166,13 +166,12 @@ a {
 }
 .rules-list{
     font-size:15px;
-
+    margin: 10px;
 }
 #startlist{
     font-size: 35px;
     margin:0px;
     text-align: left;
-
 }
 
 #titlerules{
@@ -447,3 +446,20 @@ button#stay
 #modal-cancel:hover {
   background-color: #eee;
 }
+
+.explanation{
+  margin-left: 20px;
+  text-align: center;
+}
+
+.startlist{
+  text-align: center;
+}
+
+.listitems{
+  overflow: hidden;
+  position: absolute;
+  bottom:0;
+  padding: 0;
+  margin: 20;
+  }
