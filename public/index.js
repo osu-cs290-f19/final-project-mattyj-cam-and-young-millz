@@ -1,6 +1,157 @@
+<<<<<<< HEAD
 
 var allElems = [];
 
+=======
+function organizeData(scoreData){
+  var newData;
+  for(var i = 0; i < scoreData.length; i++ ){
+      console.log(i);
+  }
+  return(scoreData);
+}
+
+
+// blackjack.js
+// A simple 'vanilla' JavaScript implementation of blackjack
+
+// Know Issues:
+// "Simple stratgey" is a massive oversimplification
+
+//console.log("Script link success!");
+
+// Object creation helper function from JavaScript: The Good Parts
+/*
+if (typeof Object.create !== 'function') {
+    Object.create = function (o) {
+        var F = function () { };
+        F.prototype = o;
+        return new F();
+    }
+};*/
+
+// an object to hold all of the variables for the blackjack app
+// to avoid global variable drama
+
+var jsbApp = {};
+var player = {};
+
+player.balance = 500;
+player.bet = null;
+player.trackPlayer = document.getElementById("track-player");
+
+// Store important elements in variables for later manipulation
+jsbApp.pcards = document.getElementById('pcards');
+jsbApp.dcards = document.getElementById('dcards');
+jsbApp.hitButton = document.getElementById('hit');
+jsbApp.stayButton = document.getElementById('stay');
+jsbApp.playButton = document.getElementById('play');
+jsbApp.textUpdates = document.getElementById('textUpdates');
+jsbApp.buttonBox = document.getElementById('buttonBox');
+jsbApp.phandtext = document.getElementById('phand');
+jsbApp.dhandtext = document.getElementById('dhand');
+jsbApp.tracker = document.getElementById('tracker');
+jsbApp.choice = document.getElementById('choice');
+
+// initialize variables to track hands/cards/etc.
+jsbApp.playerHand = [];
+jsbApp.dealerHand = [];
+jsbApp.deck = [];
+jsbApp.suits = ['clubs <span class="bold">&#9827</span>', 'diamonds <span class="redcard">&#9830</span>', 'hearts <span class="redcard">&#9829</span>', 'spades <span class="bold">&#9824</span>'];
+jsbApp.values = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+jsbApp.gameStatus = 0; // flag that game has not yet been won
+jsbApp.wins = 0; // flag that game has not yet been won
+jsbApp.draws = 0; // flag that game has not yet been won
+jsbApp.losses = 0; // flag that game has not yet been won
+jsbApp.games = 0; // flag that game has not yet been won
+
+// Object Constructor for a card. !!! ALWAYS USE NEW WHEN MAKING A NEW CARD!!!
+function card(suit, value, name) {
+    this.suit = suit; // string of c/d/h/s
+    this.value = value; // number 1 - 10
+    this.name = name; // string of the full card name
+};
+
+var betBox = document.getElementById('bet-box');
+
+var betButton = document.getElementById('submit-bet');
+if(betButton){
+  betButton.addEventListener('click', handleBetButtonClick);
+}
+
+function handleBetButtonClick(){
+  player.bet = Number(document.getElementById('bet-box').value);
+
+  if(player.bet > player.balance){
+    alert("You don't have that much money to bet!");
+    player.bet = null;
+    return;
+  }
+  else{
+    newGame();
+  }
+
+}
+
+
+
+var newGame = function () {
+
+    betBox.classList.add('hidden');
+    betButton.classList.add('hidden');
+    betBox.value = null;
+
+    // reset text and variables for newgame
+    jsbApp.dcards.innerHTML = "";
+    jsbApp.dcards.innerHTML = "";
+    jsbApp.playerHand = [];
+    jsbApp.dealerHand = [];
+    jsbApp.gameStatus = 0;
+
+    // Create the new deck
+    jsbApp.deck = createDeck();
+
+    // Deal two cards to the player and two cards to the dealer
+    jsbApp.playerHand.push(jsbApp.deck.pop());
+    jsbApp.playerHand.push(jsbApp.deck.pop());
+
+    // check for player victory
+    if (handTotal(jsbApp.playerHand) === 21)
+    {
+        jsbApp.wins += 1;
+        jsbApp.games += 1;
+        jsbApp.gameStatus = 1; // to cause the dealer's hand to be drawn face up
+        drawHands();
+        jsbApp.textUpdates.innerHTML = "You won! You got 21 on your initial hand!";
+        player.balance -= player.bet;
+        track();
+        jsbApp.gameStatus = 2; // game is won
+        return;
+    }
+
+    jsbApp.dealerHand.push(jsbApp.deck.pop());
+    jsbApp.dealerHand.push(jsbApp.deck.pop());
+
+    // check for dealer victory
+    if (handTotal(jsbApp.dealerHand) === 21)
+    {
+        jsbApp.games += 1;
+        jsbApp.losses += 1;
+        jsbApp.gameStatus = 1; // to cause the dealer's hand to be drawn face up
+        drawHands();
+        jsbApp.textUpdates.innerHTML = "You lost! The dealer had 21 on their initial hand.";
+        player.balance -= player.bet;
+        track();
+        jsbApp.gameStatus = 2; // game is won
+        return;
+    }
+
+    // draw the hands if neither won on the initial deal
+    drawHands();
+    advise();
+    jsbApp.buttonBox.classList.remove("hidden"); // show hit/stay buttons
+    jsbApp.textUpdates.innerHTML = "The initial hands are dealt!";
+>>>>>>> 17e6296a42b930d923876bb6d8f9ee889a29e66c
 
 function parseBoardElem(elem){
   var elem = {
@@ -12,6 +163,7 @@ function parseBoardElem(elem){
   return(elem);
 }
 
+<<<<<<< HEAD
 function insertLoser(score, name, counter){
   var newElem = Handlebars.templates.loserCard({
     place: counter,
@@ -38,6 +190,165 @@ for(var i = 0; i<boardElems.length; i++){
 }
 
 var swapped, temp;
+=======
+// Game loop begins when the play button is pressed
+
+// Hit button pressed:
+jsbApp.hitButton.addEventListener("click", function () {
+    // disable if the game has already been won
+    if (jsbApp.gameStatus === 2)
+    {
+        console.log("Hit clicked when game was over or already clicked.");
+        return;
+    }
+
+    // deal a card to the player and draw the hands
+    jsbApp.playerHand.push(jsbApp.deck.pop());
+    drawHands();
+
+
+    var handVal = handTotal(jsbApp.playerHand);
+    if (handVal > 21)
+    {
+        bust();
+        advise();
+        return;
+    }
+    else if (handVal === 21)
+    {
+        victory();
+        advise();
+        return;
+    }
+    advise();
+    jsbApp.textUpdates.innerHTML = "Hit or stay?</p>";
+    return;
+});
+
+// Stay button pressed:
+jsbApp.stayButton.addEventListener("click", function stayLoop() {
+    //console.log("(1)Inside stayLoop now");
+    // disable ig game already won
+    if (jsbApp.gameStatus === 2)
+    {
+        console.log("Stay clicked when game was over or already clicked.");
+        return;
+    }
+    else if (jsbApp.gameStatus === 0) // i.e. stay was just pressed
+    {
+
+        jsbApp.buttonBox.classList.add("hidden"); // take away the hit and stay buttons
+        var handVal = handTotal(jsbApp.dealerHand);
+        jsbApp.gameStatus = 1; // enter the 'stay' loop
+        advise(); // clear advise
+        jsbApp.textUpdates.innerHTML = "The dealer reveals their hidden card";
+        drawHands();
+        setTimeout(stayLoop, 750); // return to the stay loop
+    }
+    else if (jsbApp.gameStatus === 1) {
+
+    // If dealer has less than 17, hit
+    var handVal = handTotal(jsbApp.dealerHand);
+    if (handVal > 16 && handVal <= 21) // dealer stays and game resolves
+    {
+        drawHands();
+        //console.log("----------Dealer stays, checking hands");
+        var playerVal = handTotal(jsbApp.playerHand);
+        if (playerVal > handVal)
+        {
+            victory();
+            return;
+        }
+        else if (playerVal < handVal)
+        {
+            bust();
+            return;
+        }
+        else
+        {
+            tie();
+            return;
+        }
+    }
+    if (handVal > 21)
+    {
+        victory();
+        return;
+    }
+    else // hit
+    {
+        jsbApp.textUpdates.innerHTML = "Dealer hits!";
+        jsbApp.dealerHand.push(jsbApp.deck.pop());
+        drawHands();
+        setTimeout(stayLoop, 750);
+        return;
+    }
+    }
+});
+
+var victory = function () {
+    jsbApp.wins += 1;
+    jsbApp.games += 1;
+    var explanation = "";
+    jsbApp.gameStatus = 2; // flag that the game is over
+    var playerTotal = handTotal(jsbApp.playerHand);
+    var dealerTotal = handTotal(jsbApp.dealerHand);
+    if (playerTotal === 21)
+    {
+        explanation = "Your hand's value is 21!";
+    }
+    else if (dealerTotal > 21)
+    {
+        explanation = "Dealer busted with " + dealerTotal + "!";
+    }
+    else
+    {
+        explanation = "You had " + playerTotal + " and the dealer had " + dealerTotal + ".";
+    }
+    jsbApp.textUpdates.innerHTML = "You won!<br>" + explanation + "<br>Enter a bet to play again";
+    player.balance += player.bet;
+    track();
+}
+
+var bust = function () {
+    jsbApp.games += 1;
+    jsbApp.losses += 1;
+    var explanation = "";
+    jsbApp.gameStatus = 2; // flag that the game is over
+    var playerTotal = handTotal(jsbApp.playerHand);
+    var dealerTotal = handTotal(jsbApp.dealerHand);
+    if (playerTotal > 21)
+    {
+        explanation = "You busted with " + playerTotal + ".";
+    }
+    jsbApp.textUpdates.innerHTML = "You lost.<br>" + explanation + "<br>Enter a bet to play again.";
+
+    player.balance -= player.bet;
+    track();
+}
+
+var tie = function () {
+    jsbApp.games += 1;
+    jsbApp.draws += 1;
+    var explanation = "";
+    jsbApp.gameStatus = 2; // flag that the game is over
+    var playerTotal = handTotal(jsbApp.playerHand);
+    jsbApp.textUpdates.innerHTML = "It's a tie at " + playerTotal + " points each.<br>Enter a bet to play again.";
+    track();
+}
+
+// update the win/loss counter
+var track = function () {
+    jsbApp.tracker.innerHTML = "<p>Wins: " + jsbApp.wins + " Draws: " + jsbApp.draws + " Losses: " + jsbApp.losses + "</p>";
+    player.trackPlayer.innerHTML = "<p>Player Balance: " + player.balance + "</p>";
+
+    betBox.classList.remove('hidden');
+    betButton.classList.remove('hidden');
+    jsbApp.buttonBox.classList.add("hidden");
+
+
+}
+>>>>>>> 17e6296a42b930d923876bb6d8f9ee889a29e66c
 
 for(var i = 0; i < allElems.length - 1; i++){
   swapped = 0;
@@ -53,6 +364,7 @@ for(var i = 0; i < allElems.length - 1; i++){
   if(swapped == 1){break;}
 }
 
+<<<<<<< HEAD
 var postContainer = document.getElementById('cards');
   while(postContainer.lastChild) {
     postContainer.removeChild(postContainer.lastChild);
@@ -67,3 +379,88 @@ allElems.forEach(function (scoreCard){
   }
   counter += 1;
 });
+=======
+var advise = function () {
+    // no advise if player has no choices
+    if (jsbApp.gameStatus > 0)
+    {
+        jsbApp.choice.innerHTML = "";
+        return;
+    }
+    var playerTotal = handTotal(jsbApp.playerHand);
+    var soft = softCheck(jsbApp.playerHand);
+    console.log("Soft: " + soft);
+    var dealerUp = jsbApp.dealerHand[1].value;
+    // count dealer's ace as 11 to simplify logic
+    if (dealerUp === 1)
+    {
+        dealerUp = 11;
+    }
+
+    // provide advice based on HIGHLY simplified blackjack basic strategy
+    if (playerTotal <= 11 && !soft)
+    {
+        jsbApp.choice.innerHTML = "[Hit!]";
+    }
+    else if (playerTotal >= 12 && playerTotal <= 16 && dealerUp <= 6 && !soft)
+    {
+        jsbApp.choice.innerHTML = "[Stay]";
+    }
+    else if (playerTotal >= 12 && playerTotal <= 16 && dealerUp >= 7 && !soft)
+    {
+        jsbApp.choice.innerHTML = "[Hit!]";
+    }
+    else if (playerTotal >= 17 && playerTotal <= 21 && !soft)
+    {
+        jsbApp.choice.innerHTML = "[Stay]";
+    }
+    else if (playerTotal >= 12 && playerTotal <= 18 && soft)
+    {
+        jsbApp.choice.innerHTML = "[Hit!]";
+    }
+    else if (playerTotal >= 19 && playerTotal <= 21 && soft)
+    {
+        jsbApp.choice.innerHTML = "[Stay]";
+    }
+    else
+    {
+        jsbApp.choice.innerHTML = "Massive error, unexpected scenario, idk";
+        console.log("Error: Player's hand was " + playerTotal + " and dealer's faceup was " + dealerUp + ".");
+    }
+    return;
+}
+
+var showCashOutModal = document.getElementById('c-o-modal');
+var showCashOutModalBackground = document.getElementById('c-o-background');
+
+
+var cashOutButton = document.getElementById('cash-out-button');
+if(cashOutButton){
+  cashOutButton.addEventListener('click', function(){
+    var modalHeader3 = document.getElementById('player-score-header');
+    player.modalHeader3.innerHTML = "<h3>Player Score: " + player.balance + "</h3>";
+    showCashOutModal.classList.remove('hidden');
+    showCashOutModalBackground.classList.remove('hidden');
+
+  })
+
+}
+
+var modalAcceptButton = document.getElementById('modal-accept');
+if(modalAcceptButton){
+  modalAcceptButton.addEventListener('click', function(){
+    showCashOutModal.classList.add('hidden');
+    showCashOutModalBackground.classList.add('hidden');
+
+  });
+}
+
+var modalCancelButton = document.getElementById('modal-cancel');
+if(modalCancelButton){
+  modalCancelButton.addEventListener('click', function(){
+    showCashOutModal.classList.add('hidden');
+    showCashOutModalBackground.classList.add('hidden')
+
+  });
+}
+>>>>>>> 17e6296a42b930d923876bb6d8f9ee889a29e66c

@@ -1,13 +1,21 @@
 <body>
+  <div class= game-content>
+
+    <div id="track-player" class="balance-box">
+      <p>Player Balance: 500</p>
+    </div>
+
+    <div class= "betting-container">
+      <div class="bet-input-element">
+        <input type= "text" name="bet-box" id="bet-box" class= "bet-input">
+        <button type= "button" id="submit-bet" class="action-button">Bet!</button>
+      </div>
+    </div>
+
       <div class="textupdates" id="textUpdates">
-          Press 'New Game' to begin!
-
-
+          Enter a bet to begin!
       </div>
 
-      <div class="buttonbox" id="newgame">
-          <button alt="play" id="play">New Game</button>
-      </div>
       <div class="buttonbox hidden" id="buttonBox">
           <button alt="hit" id="hit">Hit</button>
           <button alt="stay" id="stay">Stay</button>
@@ -22,8 +30,8 @@
               </th>
           </tr>
           <tr>
-              <td id="pcards">No cards dealt yet</td>
-              <td id="dcards">No cards dealt yet</td>
+              <td id="pcards"></td>
+              <td id="dcards"></td>
 
           </tr>
       </table>
@@ -34,5 +42,36 @@
           <p><span class="bold" > Suggestion: </span></p>
           <span id="choice" class="bold redcard"></span>
       </div>
+  </div>
+      <div class= "cash-out-button-container">
+        <button type="button" id="cash-out-button" class="action-button">Cash Out</button>
+      </div>
+
+      <div id="c-o-background" class="hidden"></div>
+      <div id="c-o-modal" class="hidden">
+        <div class="modal-dialog">
+          <div id="player-score-header">
+            <h3>Player Score: </h3>
+          </div>
+
+          <div class="modal-body">
+
+            <div class="player-data-element">
+              <label for="player-input-element">Player Name</label>
+              <input type="text" id="player-name-input"></input>
+            </div>
+
+            <div class="player-data-element">
+              <label for="player-input-element">Player Picture</label>
+              <input type="text" id="player-url-input"></input>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+            <button type="button" id="modal-accept" class="action-button">Submit Score</button>
+        </div>
+      </div>
+    </div>
 
 </body>

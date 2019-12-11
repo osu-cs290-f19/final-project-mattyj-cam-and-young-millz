@@ -80,7 +80,6 @@ a {
 
 .navbar {
   display: flex;
-  border-style: solid;
   border-width: 2px;
   background-color:rgb(0,0,112);
   font-size: 25px;
@@ -101,25 +100,43 @@ a {
   border-radius: 5px;
 }
 
+
+
+.Rules-board img{
+  position: absolute;
+   top: 0px;
+   right: 0px;
+  height:30.8%;
+
+}
+
 #startlist{
   display: inline-block;
   position: absolute;
   left: -25px;
+  top: 225px;
   text-decoration: underline;
   color: black;
   font-size: 30px;
   display: flex;
 }
 
+.listitems li {
+  margin:10px;
+
+
+}
 
 .listitems{
     diplay: flex;
     font-size: 25px;
     position: absolute;
-    bottom: 140px;
+    bottom: 37px;
     margin: 10px;
     border: 5px;
 }
+
+
 
 .navitem:hover {
   ;background-color: rgba(255, 255, 255, 0.18);
@@ -176,7 +193,12 @@ a {
 
 
 
-body
+
+
+
+
+
+.game-content
 {
     font-family: Arial, sans-serif;
     font-size: 18px;
@@ -213,6 +235,16 @@ div.buttonbox
     margin-right: auto;
     text-align: center;
     padding: 8px 8px 8px 8px
+}
+
+div.balance-box
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+
 }
 
 div.textupdates
@@ -299,8 +331,119 @@ button#stay
     width: 70px;
 }
 
+#track-player
+{
+    margin-top: 10px;
+    border: 2px solid black;
+    background-color: orange;
+    border-radius: 50%;
+}
+
 #tracker
 {
+    margin-top: 20px;
     border-top: 3px solid black;
     border-bottom: 2px solid black;
+}
+
+.betting-container
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+}
+
+.cash-out-button-container
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+}
+
+#cash-out-button
+{
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  background-color: green;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  font-weight: lighter;
+  cursor: pointer;
+}
+#c-o-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+
+#c-o-background{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+.modal-header {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+#modal-close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 20px 10px;
+}
+
+#modal-cancel,
+#modal-accept {
+  margin-right: 20px;
+}
+
+#modal-cancel {
+  color: #333;
+  background-color: #fff;
+}
+
+#modal-cancel:hover {
+  background-color: #eee;
 }
