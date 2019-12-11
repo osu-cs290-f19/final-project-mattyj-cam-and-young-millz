@@ -1,5 +1,3 @@
-
-
 function organizeData(scoreData){
   var newData;
   for(var i = 0; i < scoreData.length; i++ ){
@@ -29,7 +27,13 @@ if (typeof Object.create !== 'function') {
 
 // an object to hold all of the variables for the blackjack app
 // to avoid global variable drama
+
 var jsbApp = {};
+var player = {};
+
+player.balance = 500;
+player.bet = null;
+player.trackPlayer = document.getElementById("track-player");
 
 // Store important elements in variables for later manipulation
 jsbApp.pcards = document.getElementById('pcards');
@@ -42,7 +46,6 @@ jsbApp.buttonBox = document.getElementById('buttonBox');
 jsbApp.phandtext = document.getElementById('phand');
 jsbApp.dhandtext = document.getElementById('dhand');
 jsbApp.tracker = document.getElementById('tracker');
-jsbApp.newgame = document.getElementById('newgame');
 jsbApp.choice = document.getElementById('choice');
 
 // initialize variables to track hands/cards/etc.
@@ -64,10 +67,34 @@ function card(suit, value, name) {
     this.name = name; // string of the full card name
 };
 
+var betBox = document.getElementById('bet-box');
+
+var betButton = document.getElementById('submit-bet');
+if(betButton){
+  betButton.addEventListener('click', handleBetButtonClick);
+}
+
+function handleBetButtonClick(){
+  player.bet = Number(document.getElementById('bet-box').value);
+
+  if(player.bet > player.balance){
+    alert("You don't have that much money to bet!");
+    player.bet = null;
+    return;
+  }
+  else{
+    newGame();
+  }
+
+}
+
+
 
 var newGame = function () {
-    // remove newgame button and show hit/stay buttons
-    jsbApp.newgame.classList.add("hidden");
+
+    betBox.classList.add('hidden');
+    betButton.classList.add('hidden');
+    betBox.value = null;
 
     // reset text and variables for newgame
     jsbApp.dcards.innerHTML = "";
@@ -91,6 +118,7 @@ var newGame = function () {
         jsbApp.gameStatus = 1; // to cause the dealer's hand to be drawn face up
         drawHands();
         jsbApp.textUpdates.innerHTML = "You won! You got 21 on your initial hand!";
+        player.balance -= player.bet;
         track();
         jsbApp.gameStatus = 2; // game is won
         return;
@@ -107,6 +135,7 @@ var newGame = function () {
         jsbApp.gameStatus = 1; // to cause the dealer's hand to be drawn face up
         drawHands();
         jsbApp.textUpdates.innerHTML = "You lost! The dealer had 21 on their initial hand.";
+        player.balance -= player.bet;
         track();
         jsbApp.gameStatus = 2; // game is won
         return;
@@ -255,7 +284,6 @@ var deckPrinter = function (deck) {
 }
 
 // Game loop begins when the play button is pressed
-jsbApp.playButton.addEventListener("click", newGame);
 
 // Hit button pressed:
 jsbApp.hitButton.addEventListener("click", function () {
@@ -369,7 +397,8 @@ var victory = function () {
     {
         explanation = "You had " + playerTotal + " and the dealer had " + dealerTotal + ".";
     }
-    jsbApp.textUpdates.innerHTML = "You won!<br>" + explanation + "<br>Press 'New Game' to play again.";
+    jsbApp.textUpdates.innerHTML = "You won!<br>" + explanation + "<br>Enter a bet to play again";
+    player.balance += player.bet;
     track();
 }
 
@@ -384,7 +413,9 @@ var bust = function () {
     {
         explanation = "You busted with " + playerTotal + ".";
     }
-    jsbApp.textUpdates.innerHTML = "You lost.<br>" + explanation + "<br>Press 'New Game' to play again.";
+    jsbApp.textUpdates.innerHTML = "You lost.<br>" + explanation + "<br>Enter a bet to play again.";
+
+    player.balance -= player.bet;
     track();
 }
 
@@ -394,15 +425,20 @@ var tie = function () {
     var explanation = "";
     jsbApp.gameStatus = 2; // flag that the game is over
     var playerTotal = handTotal(jsbApp.playerHand);
-    jsbApp.textUpdates.innerHTML = "It's a tie at " + playerTotal + " points each.<br>Press 'New Game' to play again.";
+    jsbApp.textUpdates.innerHTML = "It's a tie at " + playerTotal + " points each.<br>Enter a bet to play again.";
     track();
 }
 
 // update the win/loss counter
 var track = function () {
     jsbApp.tracker.innerHTML = "<p>Wins: " + jsbApp.wins + " Draws: " + jsbApp.draws + " Losses: " + jsbApp.losses + "</p>";
-    jsbApp.newgame.classList.remove("hidden");
+    player.trackPlayer.innerHTML = "<p>Player Balance: " + player.balance + "</p>";
+
+    betBox.classList.remove('hidden');
+    betButton.classList.remove('hidden');
     jsbApp.buttonBox.classList.add("hidden");
+
+
 }
 
 // check the player hand for an ace

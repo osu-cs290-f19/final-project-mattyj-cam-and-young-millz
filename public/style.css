@@ -133,7 +133,12 @@ a {
 
 
 
-body
+
+
+
+
+
+.game-content
 {
     font-family: Arial, sans-serif;
     font-size: 18px;
@@ -170,6 +175,16 @@ div.buttonbox
     margin-right: auto;
     text-align: center;
     padding: 8px 8px 8px 8px
+}
+
+div.balance-box
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+
 }
 
 div.textupdates
@@ -256,8 +271,43 @@ button#stay
     width: 70px;
 }
 
+#track-player
+{
+    border-bottom: 2px solid black;
+}
+
 #tracker
 {
     border-top: 3px solid black;
     border-bottom: 2px solid black;
+}
+
+.betting-container
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+}
+
+.cash-out-button-container
+{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px
+}
+
+#cash-out-button
+{
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  background-color: green;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  font-weight: lighter;
+  cursor: pointer;
 }

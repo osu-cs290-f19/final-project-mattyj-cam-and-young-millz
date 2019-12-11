@@ -1,13 +1,24 @@
 <body>
+  <div class= game-content>
+
+      <div id="track-player" class="balance-box">
+        <p>Player Balance: 500</p>
+      </div>
+
+      <div class= "betting-container">
+        <div class="bet-input-element">
+          <input type= "text" name="bet-box" id="bet-box" class= "bet-input">
+          <button type= "button" id="submit-bet" class="action-button">Bet!</button>
+        </div>
+      </div>
+
+
+
+
       <div class="textupdates" id="textUpdates">
-          Press 'New Game' to begin!
-
-
+          Submit a bet to begin!
       </div>
 
-      <div class="buttonbox" id="newgame">
-          <button alt="play" id="play">New Game</button>
-      </div>
       <div class="buttonbox hidden" id="buttonBox">
           <button alt="hit" id="hit">Hit</button>
           <button alt="stay" id="stay">Stay</button>
@@ -35,4 +46,7 @@
           <span id="choice" class="bold redcard"></span>
       </div>
 
+      <div class= "cash-out-button-container">
+        <button type="button" id="cash-out-button" class="action-button">Cash Out</button>
+      </div>
 </body>
