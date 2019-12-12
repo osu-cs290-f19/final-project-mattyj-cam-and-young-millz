@@ -608,7 +608,7 @@ var cashOutButton = document.getElementById('cash-out-button');
 if(cashOutButton){
   cashOutButton.addEventListener('click', function(){
     var modalHeader3 = document.getElementById('player-score-header');
-    //player.modalHeader3.innerHTML = "<h3>Player Score: " + player.balance + "</h3>";
+    //player.modalHeader3.innerHTML = "player-score-header " + player.balance;
     showCashOutModal.classList.remove('hidden');
     showCashOutModalBackground.classList.remove('hidden');
     console.log("this is the variable for the info", modalHeader3);

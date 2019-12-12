@@ -100,7 +100,28 @@ a {
   border-radius: 5px;
 }
 
+.player-data-element{
+  display:flex;
 
+}
+#player-score-header{
+  position: absolute;
+  top:25px;
+}
+
+#player-name-input{
+  margin-right: 5px;
+}
+
+.player-data-element{
+  margin-top: 35px;
+  font-size: 30px;
+  
+}
+#player-url-input{
+margin-right: 5px;
+
+}
 
 .Rules-board img{
   position: absolute;
