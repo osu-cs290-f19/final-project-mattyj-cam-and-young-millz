@@ -1,8 +1,11 @@
 
 var allElems = [];
 
+
+
 var playername;
 var playerurl;
+
 
 
 function parseBoardElem(elem){
@@ -15,6 +18,8 @@ function parseBoardElem(elem){
   return(elem);
 }
 
+
+
 function insertLoser(score, name, counter){
   var newElem = Handlebars.templates.loserCard({
     place: counter,
@@ -25,6 +30,8 @@ function insertLoser(score, name, counter){
   var container = document.getElementById('losers');
   container.insertAdjacentHTML('beforeend', newElem);
 }
+
+
 
 function insertNewElem(photoURL, score, name){
   console.log("adding new element");
@@ -42,10 +49,14 @@ function insertNewElem(photoURL, score, name){
   container.insertAdjacentHTML('beforeend', newElem);
 }
 
+
+
 var boardElems = document.getElementsByClassName('card');
 for(var i = 0; i<boardElems.length; i++){
   allElems.push(parseBoardElem(boardElems[i]));
 }
+
+
 
 var swapped, temp;
 for(var i = 0; i < allElems.length - 1; i++){
@@ -78,11 +89,11 @@ allElems.forEach(function (scoreCard){
 });
 }
 
+
+
 var leadBoardButton = document.getElementById('ldrbrd');
 if(leadBoardButton){
   leadBoardButton.addEventListener('click', function(){
-
-
   });
 }
 
@@ -616,33 +627,16 @@ var advise = function () {
     return;
 }
 
+
+
 //            Event listener functions        //
 
 
-var headerThing = document.getElementById('playerscore')
 
 var showCashOutModal = document.getElementById('c-o-modal');
 var showCashOutModalBackground = document.getElementById('c-o-background');
 
-function findPlace(){
-
-  var count = 0;
-
-  console.log("score: ", allElems[1]);
-
-  for(var i = 0; i < allElems.length; i++){
-    console.log("element score: ", allElems[i].score);
-
-    if(allElems[i].score < player.balance){
-      count++;
-    }
-  }
-  return count;
-}
-
 var playerBalancePlacehold = document.getElementById('player-balance-place');
-
-
 var cashOutButton = document.getElementById('cash-out-button');
 if(cashOutButton){
   cashOutButton.addEventListener('click', function(){
@@ -652,8 +646,6 @@ if(cashOutButton){
     playerBalancePlacehold.innerHTML = "<h3>" + player.balance + "</h3>";
   })
 }
-
-
 
 
 
