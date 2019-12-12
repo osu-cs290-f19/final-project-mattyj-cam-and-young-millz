@@ -14,7 +14,7 @@ BLACK JACK:
 
 Organization:
   Universal header for all pages
-  theme: black and red
+  theme: orange and blue
 
 
 GamePage:
@@ -24,6 +24,7 @@ GamePage:
   betting desired amount as long as whole number less than or equal to what they have
     (not negative)
   Can cash out at any desired time
+  If player runs out of money the screen alerts then refreshes to restart the player
 
 LeaderBoard:
   (same header)
