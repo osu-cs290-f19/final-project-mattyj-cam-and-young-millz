@@ -36,22 +36,14 @@ app.get('/rules', function(req,res, next){
     res.status(200).render('rules');
 });
 
+app.get('/play' , function(req,res,next){
+    var playerCard = {name: "Player", score: null, photoURL: "https://www.sackettwaconia.com/wp-content/uploads/default-profile.png"}
 
-
-app.get('/leaderboard/:n', function(req,res, next){
-    var n = req.params.n;
-    console.log("== Requesting single player");
-      var singlepost = data[n];
-      res.status(200).render('leaderboard',  {
-          display: true,
-          singlepost: singlepost
+      console.log("==Requesting to play the game");
+      res.status(200).render('play', {
+        userCard: playerCard
       });
 
-});
-
-app.get('/play' , function(req,res,next){
-      console.log("==Requesting to play the game");
-      res.status(200).render('play');
 
 });
 

@@ -1,21 +1,22 @@
 <body>
 
-{{#if display}}
-    <section id = "cards">
-      {{> scoreCard singlepost}}
-    </section>
-
-{{else}}
-
-<section id="cards">
-    {{#each scoreData}}
-      {{>scoreCard}}
-    {{/each}}
 </section>
-<section id="losers">
-  {{#each restData}}
-    {{>loserCard}}
-  {{/each}}
+  {{#if display}}
+      <section id = "cards">
+        {{> scoreCard singlepost}}
+      </section>
+
+  {{else}}
+
+  <section id="cards">
+      {{#each scoreData}}
+        {{>scoreCard}}
+      {{/each}}
+  </section>
+  <section id="losers">
+    {{#each restData}}
+      {{>loserCard}}
+    {{/each}}
 </section>
 
 {{/if}}

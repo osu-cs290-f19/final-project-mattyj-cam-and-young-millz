@@ -25,6 +25,7 @@ a {
 .loser-card {
   margin: 5px;
 }
+
 .cards {
   display: inline-flex;
   align-items: center;
@@ -116,7 +117,7 @@ a {
 .player-data-element{
   margin-top: 35px;
   font-size: 30px;
-  
+
 }
 #player-url-input{
 margin-right: 5px;
@@ -367,6 +368,18 @@ button#stay
   padding: 8px 8px 8px 8px
 }
 
+#play-again-button{
+  font-size: 20px;
+  color: white;
+  margin-left: 110px;
+  background-color: green;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  font-weight: lighter;
+  cursor: pointer;
+  align-content: center;
+}
+
 #cash-out-button
 {
   font-size: 20px;
@@ -398,23 +411,39 @@ button#stay
   background-color: rgba(0, 0, 0, 0.85);
 }
 
+#playerscore{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px;
+}
+
+
+#player-balance-place{
+  text-align: center;
+  padding-right: 17px;
+  font-size: 30px;
+  padding-bottom: 15px;
+}
+
+#modal-items{
+  margin-left: 22px;
+}
+
 .modal-dialog {
-  width: auto;
-  max-width: 600px;
+  width: 200px;
   min-width: 350px;
   min-height: 300px;
   margin: 40px auto;
   background-color: #fff;
   border-radius: 15px;
+  align-content: center;
 }
 .modal-header {
-  position: relative;
+  text-align: center;
   padding: 10px 20px;
-}
-
-.modal-header h3 {
-  margin: 0;
-  font-size: 28px;
+  font-size: 30px;
 }
 
 #modal-close {

@@ -1,5 +1,4 @@
 <body>
-  <div class= game-content>
 
     <div id="track-player" class="balance-box">
       <p>Player Balance: 500</p>
@@ -50,26 +49,18 @@
       <div id="c-o-background" class="hidden"></div>
       <div id="c-o-modal" class="hidden">
         <div class="modal-dialog">
-          <div id="player-score-header">
-            <h3>Player Score: </h3>
+          <div class="modal-header">
+            <h3>You Cashed Out!</h2>
           </div>
-
-          <div class="modal-body">
-
-            <div class="player-data-element">
-              <label for="player-input-element">Player Name</label>
-              <input type="text" id="player-name-input"></input>
-            </div>
-
-            <div class="player-data-element">
-              <label for="player-input-element">Player Picture</label>
-              <input type="text" id="player-url-input"></input>
-            </div>
+          <div id="modal-items">
+            <section id="cards">
+              {{>scoreCard userCard}}
+            </section>
           </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
-            <button type="button" id="modal-accept" class="action-button">Submit Score</button>
+          <div id="player-balance-place">
+            <h3>1</h3>
+          </div>
+          <button type="button" id="play-again-button" class="action-button">Play Again?</button>
         </div>
       </div>
     </div>

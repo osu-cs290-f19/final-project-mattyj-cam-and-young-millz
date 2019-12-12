@@ -21,17 +21,24 @@ function insertLoser(score, name, counter){
     score: score,
     name: name
   });
+
   var container = document.getElementById('losers');
   container.insertAdjacentHTML('beforeend', newElem);
 }
 
 function insertNewElem(photoURL, score, name){
+  console.log("adding new element");
+
   var newElem = Handlebars.templates.scoreCard({
     photoURL: photoURL,
     name: name,
-    score: score
+    score: score,
+    place: 1
   });
-  var container = document.getElementById('cards');
+
+  console.log("player information==", newElem);
+
+  var container = document.getElementById("cards");
   container.insertAdjacentHTML('beforeend', newElem);
 }
 
@@ -39,6 +46,7 @@ var boardElems = document.getElementsByClassName('card');
 for(var i = 0; i<boardElems.length; i++){
   allElems.push(parseBoardElem(boardElems[i]));
 }
+
 var swapped, temp;
 for(var i = 0; i < allElems.length - 1; i++){
   swapped = 0;
@@ -77,6 +85,14 @@ if(leadBoardButton){
 
   });
 }
+
+
+
+//            Black Jack Functionality          //
+
+
+
+
 
 // blackjack.js
 // A simple 'vanilla' JavaScript implementation of blackjack
@@ -600,54 +616,51 @@ var advise = function () {
     return;
 }
 
+//            Event listener functions        //
+
+
+var headerThing = document.getElementById('playerscore')
+
 var showCashOutModal = document.getElementById('c-o-modal');
 var showCashOutModalBackground = document.getElementById('c-o-background');
+
+function findPlace(){
+
+  var count = 0;
+
+  console.log("score: ", allElems[1]);
+
+  for(var i = 0; i < allElems.length; i++){
+    console.log("element score: ", allElems[i].score);
+
+    if(allElems[i].score < player.balance){
+      count++;
+    }
+  }
+  return count;
+}
+
+var playerBalancePlacehold = document.getElementById('player-balance-place');
 
 
 var cashOutButton = document.getElementById('cash-out-button');
 if(cashOutButton){
   cashOutButton.addEventListener('click', function(){
-    var modalHeader3 = document.getElementById('player-score-header');
-    //player.modalHeader3.innerHTML = "player-score-header " + player.balance;
+
     showCashOutModal.classList.remove('hidden');
     showCashOutModalBackground.classList.remove('hidden');
-    console.log("this is the variable for the info", modalHeader3);
-
+    playerBalancePlacehold.innerHTML = "<h3>" + player.balance + "</h3>";
   })
-
 }
 
-var playerin = document.getElementById('player-name-input');
-playerin.addEventListener('change', function(){
-    playername = event.currentTarget.value;
-    console.log(" THis is the playername inputted", playername);
-
-})
-
-var playerurl = document.getElementById('player-url-input');
-playerurl.addEventListener('change', function(){
-    playerurl = event.currentTarget.value;
-    console.log("This is the url for it", playerurl);
-
-})
 
 
 
-var modalAcceptButton = document.getElementById('modal-accept');
-if(modalAcceptButton){
-  modalAcceptButton.addEventListener('click', function(){
-    showCashOutModal.classList.add('hidden');
-    showCashOutModalBackground.classList.add('hidden');
-  ;  insertNewElem(playerurl, player.score, playername);
 
-  });
-}
+var playAgainButton = document.getElementById('play-again-button');
 
-var modalCancelButton = document.getElementById('modal-cancel');
-if(modalCancelButton){
-  modalCancelButton.addEventListener('click', function(){
-    showCashOutModal.classList.add('hidden');
-    showCashOutModalBackground.classList.add('hidden')
-
-  });
+if(playAgainButton){
+  playAgainButton.addEventListener('click', function(){
+    location.reload();
+  })
 }
